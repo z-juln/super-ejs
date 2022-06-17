@@ -1,6 +1,6 @@
 {
   "name": "super-ejs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "typings": "typing.d.ts",
   "files": [
@@ -27,9 +27,7 @@
     "@juln/change-case": "^0.0.3",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3"
-  },
-  "devDependencies": {
+    "glob": "^8.0.3",
     "@types/ejs": "^3.1.1"
   }
 }
