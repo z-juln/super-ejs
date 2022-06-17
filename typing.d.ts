@@ -1,4 +1,4 @@
-import ejs from 'ejs';
+declare type Ejs = typeof import('ejs');
 
 export * from 'ejs';
 
@@ -9,7 +9,10 @@ export const gerenateDir: (
   options?: ejs.Options
 ) => Promise<void>;
 
-export default {
-  ...ejs,
-  gerenateDir,
-};
+export declare interface SuperEjs extends Ejs {
+  gerenateDir: typeof gerenateDir;
+}
+
+declare const superEjs: SuperEjs;
+
+export default superEjs;
