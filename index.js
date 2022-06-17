@@ -1,7 +1,7 @@
 const changeCase = require('@juln/change-case');
 const ejs = require('ejs');
 const glob = require('glob');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 const gerenateDir = (
