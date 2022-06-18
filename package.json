@@ -1,6 +1,6 @@
 {
   "name": "super-ejs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "typings": "typing.d.ts",
   "files": [
@@ -24,10 +24,9 @@
   "homepage": "https://github.com/z-juln/super-ejs#readme",
   "description": "超级版ejs",
   "dependencies": {
-    "@juln/change-case": "^0.0.3",
+    "@types/ejs": "^3.1.1",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3",
-    "@types/ejs": "^3.1.1"
+    "glob": "^8.0.3"
   }
 }

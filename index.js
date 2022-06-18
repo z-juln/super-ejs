@@ -1,4 +1,3 @@
-const changeCase = require('@juln/change-case');
 const ejs = require('ejs');
 const glob = require('glob');
 const fs = require('fs-extra');
@@ -28,9 +27,6 @@ const gerenateDir = (
         return path.resolve(cwd, relativePath);
       };
 
-      String.prototype.changeCase = function(_case) {
-        return changeCase(`${this}`, _case);
-      };
       Promise.all(
         files.map(filePath => path.resolve(tplDir, filePath))
           .map(tplFilePath => {
@@ -40,10 +36,7 @@ const gerenateDir = (
               return fs.writeFile(outFilePath, content);
             });
         })
-      ).then(() => {
-        String.prototype.changeCase = undefined;
-        resolve();
-      }, reject);
+      ).then(resolve, reject);
     });
   });
 };
