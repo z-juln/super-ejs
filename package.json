@@ -1,6 +1,6 @@
 {
   "name": "super-ejs",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "typings": "typing.d.ts",
   "files": [
@@ -15,7 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/z-juln/super-ejs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "ejs",
+    "engine",
+    "template",
+    "模板下载",
+    "cli"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
