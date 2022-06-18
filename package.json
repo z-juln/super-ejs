@@ -1,6 +1,6 @@
 {
   "name": "super-ejs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "typings": "typing.d.ts",
   "files": [

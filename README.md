@@ -16,8 +16,9 @@ or
 const superEjs = require('super-ejs');
 
 superEjs.gerenateDir(
-  outputPath,
-  tplDirPath,
-  { name: componentName, hi() { return 'hi'; } },
+  outputPath: '生成的目标目录路径',
+  tplDirPath: '你的ejs模板目录路径',
+  { name: componentName, hi() { return 'hi'; } }, // ejs的data参数，具体看ejs官网
+  { _with: true }, // ejs的options参数，具体看ejs官网
 );
 ```
