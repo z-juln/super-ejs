@@ -2,14 +2,14 @@
   "name": "super-ejs",
   "version": "0.0.8",
   "main": "index.js",
-  "typings": "typing.d.ts",
+  "typings": "src/typing.d.ts",
   "files": [
-    "index.js",
-    "typing.d.ts",
+    "src/index.js",
+    "src/typing.d.ts",
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "rm -rf ./src/test/build && node ./src/test/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "@types/ejs": "^3.1.1",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3"
+    "glob": "^8.0.3",
+    "isdir": "^2.0.1"
   }
 }

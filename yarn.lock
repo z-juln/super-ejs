@@ -126,6 +126,11 @@ inherits@2:
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
+isdir@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/isdir/-/isdir-2.0.1.tgz#01b93b57f2c2ef067f08a874d69e958bab976ea0"
+  integrity sha512-BXMyuMmogrzGkCtv2jLQ60Te1QFq7bNWROcXSUpd2h3jaw/Nup1fYnvfj8Eiask9lQwsV88TkBmVwLOhPkaAiA==
+
 jake@^10.8.5:
   version "10.8.5"
   resolved "https://registry.npmjs.org/jake/-/jake-10.8.5.tgz#f2183d2c59382cb274226034543b9c03b8164c46"
