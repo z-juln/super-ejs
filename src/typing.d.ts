@@ -5,6 +5,7 @@ export * from 'ejs';
 export interface superEjsOption  {
   parseFilename?: boolean | ((original: string) => string);
   ignore?: string | ReadonlyArray<string> | undefined;
+  debug?: boolean;
 }
 
 export const gerenateDir: (

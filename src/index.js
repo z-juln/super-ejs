@@ -3,6 +3,8 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const path = require('path');
 
+let log = () => {};
+
 const gerenateDir = (
   cwd,
   tplDir,
@@ -11,7 +13,11 @@ const gerenateDir = (
   options,
   superEjsOpts,
 ) => {
-  const { ignore, parseFilename: optParseDest = false } = superEjsOpts || {};
+  const { ignore, parseFilename: optParseDest = false, debug = false } = superEjsOpts || {};
+
+  if (debug) {
+    log = (...args) => console.log('\x1B[33m', 'super-ejs debug: ', '\x1B[0m', ...args);
+  }
 
   cwd = path.resolve(cwd);
   tplDir = path.resolve(tplDir);
@@ -28,15 +34,28 @@ const gerenateDir = (
         const isdir = require('isdir')(fullTplPath);
         const outputPath = path.resolve(cwd, relativeTplPath);
 
-        isdir
-          ? fs.ensureDirSync(outputPath)
-          : fs.ensureFileSync(outputPath);
+        log('outputPath: ', isdir ? 'dir' : 'file', outputPath, ' from: ', fullTplPath);
 
-        await gerenateFileContent(outputPath, fullTplPath, data, options);
+        if (isdir) {
+          fs.ensureDirSync(outputPath);
+        } else {
+          fs.ensureFileSync(outputPath);
+          log('gerenateFileContent: ', outputPath, ' from: ', fullTplPath);
+          await gerenateFileContent(outputPath, fullTplPath, data, options);
+        }
 
         if (optParseDest) {
           await updateFileOrDirName(outputPath, data, options, optParseDest);
         }
+        // isdir
+        //   ? fs.ensureDirSync(outputPath)
+        //   : fs.ensureFileSync(outputPath);
+
+        // await gerenateFileContent(outputPath, fullTplPath, data, options);
+
+        // if (optParseDest) {
+        //   await updateFileOrDirName(outputPath, data, options, optParseDest);
+        // }
       }
 
       Promise.all(
@@ -66,7 +85,11 @@ async function updateFileOrDirName(
   } else if (optParseDest instanceof Function) {
     dest = optParseDest(originalPath);
   }
-  await fs.move(originalPath, dest);
+
+  if (originalPath !== dest) {
+    log('updateFileOrDirName: ', dest, ' from: ', originalPath);
+    await fs.move(originalPath, dest);
+  }
 }
 
 /** @return {Promise<void>} */

@@ -10,11 +10,9 @@ try {
     { name },
     {},
     {
-      parseFilename(original) {
-        console.log({ original });
-        return original.replace('__name__', name);
-      },
+      parseFilename: (original) => original.replace('__name__', name),
       ignore: '**/password',
+      debug: true,
     },
   );
 } catch (error) {
