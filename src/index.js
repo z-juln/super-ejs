@@ -2,6 +2,7 @@ const ejs = require('ejs');
 const glob = require('glob');
 const fs = require('fs-extra');
 const path = require('path');
+const { isBinaryFile } = require('isbinaryfile');
 
 let log = () => {};
 
@@ -39,6 +40,8 @@ const gerenateDir = (
         if (isdir) {
           fs.ensureDirSync(outputPath);
         } else {
+          if (await isBinaryFile(fullTplPath)) return;
+
           fs.ensureFileSync(outputPath);
           log('gerenateFileContent: ', outputPath, ' from: ', fullTplPath);
           await gerenateFileContent(outputPath, fullTplPath, data, options);
@@ -56,7 +59,7 @@ const gerenateDir = (
         // if (optParseDest) {
         //   await updateFileOrDirName(outputPath, data, options, optParseDest);
         // }
-      }
+      };
 
       Promise.all(
         _files.map(parseSingle)

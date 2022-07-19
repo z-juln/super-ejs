@@ -126,6 +126,11 @@ inherits@2:
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
+isbinaryfile@^5.0.0:
+  version "5.0.0"
+  resolved "http://hnpm.hupu.io/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
+  integrity sha512-UDdnyGvMajJUWCkib7Cei/dvyJrrvo4FIrsvSFWdPpXSUorzXrDJ0S+X5Q4ZlasfPjca4yqCNNsjbCeiy8FFeg==
+
 isdir@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/isdir/-/isdir-2.0.1.tgz#01b93b57f2c2ef067f08a874d69e958bab976ea0"
