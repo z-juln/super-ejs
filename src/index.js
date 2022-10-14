@@ -24,7 +24,7 @@ const gerenateDir = (
   tplDir = path.resolve(tplDir);
 
   return new Promise((resolve, reject) => {
-    glob('**', { cwd: tplDir, ignore }, function (err, _files) {      
+    glob('**', { cwd: tplDir, ignore, dot: true }, function (err, _files) {      
       if (err) {
         reject(err);
         return;
