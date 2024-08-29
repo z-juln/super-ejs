@@ -77,7 +77,7 @@ const gerenateDir = (
         _files.map(parseSingleWithError)
       )
         .then((errorList) => {
-          const hasError = errorList.every(Boolean);
+          const hasError = errorList.some(Boolean);
           if (hasError) {
             reject(errorList);
             return;
