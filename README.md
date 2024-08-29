@@ -14,7 +14,7 @@ or
 
 ```yarn add super-ejs```
 
-```javascript
+```typescript
 const superEjs = require('super-ejs');
 
 superEjs.gerenateDir(
@@ -24,7 +24,19 @@ superEjs.gerenateDir(
   { _with: true }, // ejs的options参数，具体看ejs官网
   { parseFilename: true, ignore: 'node_modules/**' },
   // superEjs特有的参数
-);
+)
+  .catch(err => {
+    if (err?.type === 'superEjsParseError') {
+      type Err = {
+        type:'superEjsParseError';
+        data: {
+          path: string;
+          error: unknown;
+        };
+      };
+      console.log(err.data);
+    }
+  });
 ```
 
 ## 参数

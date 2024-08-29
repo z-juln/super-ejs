@@ -69,9 +69,9 @@ const gerenateDir = (
         // }
       };
 
-      /** @returns {Promise<any>} */
-      const parseSingleWithError = (/** @type {string} */ p) =>
-        parseSingle(p).catch((error) => error);
+      /** @returns {Promise<{ path: string, error: unknown; } | void>} */
+      const parseSingleWithError = (/** @type {string} */ path) =>
+        parseSingle(path).catch((error) => ({ path, error }));
 
       Promise.all(
         _files.map(parseSingleWithError)
@@ -79,7 +79,10 @@ const gerenateDir = (
         .then((errorList) => {
           const hasError = errorList.some(Boolean);
           if (hasError) {
-            reject(errorList);
+            reject({
+              type: 'superEjsParseError',
+              data: errorList,
+            });
             return;
           }
           resolve();
