@@ -76,9 +76,9 @@ const gerenateDir = (
       Promise.all(
         _files.map(parseSingleWithError)
       )
-        .then((errorList) => {
-          const hasError = errorList.some(Boolean);
-          if (hasError) {
+        .then((data) => {
+          const errorList = data.filter(Boolean);
+          if (errorList.length) {
             reject({
               type: 'superEjsParseError',
               data: errorList,
