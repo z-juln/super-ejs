@@ -1,11 +1,18 @@
+// @ts-check
+
 const ejs = require('ejs');
 const glob = require('glob');
 const fs = require('fs-extra');
 const path = require('path');
+/** @type {(fd: string, cb?: () => void) => (boolean | void)} */
+// @ts-ignore
+const checkIsDir = require('isdir');
 const { isBinaryFile } = require('isbinaryfile');
 
+/** @type {(...args: string[]) => void} */
 let log = () => {};
 
+  /** @returns {Promise<void>} */
 const gerenateDir = (
   cwd,
   tplDir,
@@ -30,9 +37,10 @@ const gerenateDir = (
         return;
       }
 
-      const parseSingle = async (relativeTplPath) => {
+      /** @returns {Promise<void>} */
+      const parseSingle = async (/** @type {string} */ relativeTplPath) => {
         const fullTplPath = path.resolve(tplDir, relativeTplPath);
-        const isdir = require('isdir')(fullTplPath);
+        const isdir = checkIsDir(fullTplPath);
         const outputPath = path.resolve(cwd, relativeTplPath);
 
         log('outputPath: ', isdir ? 'dir' : 'file', outputPath, ' from: ', fullTplPath);
@@ -61,9 +69,22 @@ const gerenateDir = (
         // }
       };
 
+      /** @returns {Promise<any>} */
+      const parseSingleWithError = (/** @type {string} */ p) =>
+        parseSingle(p).catch((error) => error);
+
       Promise.all(
-        _files.map(parseSingle)
-      ).then(() => resolve(), reject);
+        _files.map(parseSingleWithError)
+      )
+        .then((errorList) => {
+          const hasError = errorList.every(Boolean);
+          if (hasError) {
+            reject(errorList);
+            return;
+          }
+          resolve();
+        })
+        .catch(reject);
     });
   });
 };
