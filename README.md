@@ -32,7 +32,7 @@ superEjs.gerenateDir(
         data: {
           path: string;
           error: unknown;
-        };
+        }[];
       };
       console.log(err.data);
     }
